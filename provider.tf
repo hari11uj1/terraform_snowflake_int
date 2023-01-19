@@ -8,7 +8,7 @@ terraform {
   }
 }
 
-# terraform remote backend to maintain the state file. It keeps track of all the changes which are preformed through terraform
+# terraform remote  backend to maintain the state file. It keeps track of all the changes which are preformed through terraform
 terraform {
   backend "remote" {
     organization = "SNOWFLAKE_TERRAFORM_INTIGRATION"
