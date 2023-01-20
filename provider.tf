@@ -14,15 +14,15 @@ terraform {
     organization = "SNOWFLAKE_TERRAFORM_INTIGRATION"
 
     workspaces {
-      name = "snowflake_dev"
+      name = "snowflake_3"
     }
   }
 }
 
 # to connect to snowflake instance
 provider "snowflake" {
- username = var.SNW_USER
- account = var.SNW_ACCOUNT
+ username = var.SNOWFLAKE_USER
+ account = var.SNOWFLAKE_ACCOUNT
  #role = "accountadmin"
- password = var.SNW_PASSWORD
+ password = var.SNOWFLAKE_PASSWORD
 }

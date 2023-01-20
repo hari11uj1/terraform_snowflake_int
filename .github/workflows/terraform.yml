@@ -6,7 +6,6 @@ on:
     - main
   pull_request:
 
-
 #env:
   #ROOT_PATH: "${{github.workspace}}/terraform"
 
@@ -15,9 +14,10 @@ jobs:
   terraform_plan:
     name: 'Terraform plan'
     runs-on: ubuntu-latest
+    environment: prod
    
 
-    # Use the Bash shell regardless  whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    # Use the Bash shell   regardless  whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
         shell: bash
@@ -29,45 +29,28 @@ jobs:
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
-      uses: hashicorp/terraform-github-actions@master
+      uses: hashicorp/setup-terraform@v1
       with:
-          tf_actions_version: 0.12.13
-          tf_actions_subcommand: 'init'
-          tf_actions_working_dir: '.'
-          tf_actions_comment: true
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TF_VAR_SNW_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          TF_VAR_SNW_USER: ${{ secrets.SNOWFLAKE_USER }}
-          TF_VAR_SNW_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
         
-      #with:
-       # INPUT_TF_ACTIONS_CLI_CREDENTIALS_TOKEN: ${{ secrets.TF_API_TOKEN }}
-        
-      echo 'terraform plan running'  
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    #- name: Terraform Init
-     # run: terraform init
-      #working-directory: ${{env.ROOT_PATH}}
+    - name: Terraform Init
+      run: terraform init
+      working-directory: ${{env.ROOT_PATH}}
       
-
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan
+      working-directory: ${{env.ROOT_PATH}} 
       
-      
-      
-        
 
-      #working-directory: ${{env.ROOT_PATH}} 
-      
   terraform_apply:
     name: 'Terraform apply'
     runs-on: ubuntu-latest
     needs: [terraform_plan]
-    environment: PROD
+    environment: prod
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -88,14 +71,18 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
-      #working-directory: ${{env.ROOT_PATH}}
+      working-directory: ${{env.ROOT_PATH}}
 
 
     # Generates an execution plan for Terraform
     - name: Terraform Apply
       run: terraform apply --auto-approve
-      #working-directory: ${{env.ROOT_PATH}} 
-      
+      working-directory: ${{env.ROOT_PATH}} 
+      env:
+        TF_VAR_SNOWFLAKE_ACCOUNT : ${{secrets.TF_VAR_SNOWFLAKE_ACCOUNT}}
+        TF_VAR_snowflake_password: ${{secrets.TF_VAR_SNOWFLAKE_PASSWORD}}
+        TF_VAR_snowflake_role: ${{secrets.TF_VAR_SNOWFLAKE_ROLE}}
+        TF_VAR_snowflake_username: ${{secrets.TF_VAR_SNOWFLAKE_USERNAME}}  
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks

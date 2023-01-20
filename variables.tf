@@ -1,7 +1,13 @@
-variable "SNW_ACCOUNT" {}
+variable "SNOWFLAKE_ACCOUNT" {
+  type = string
+}
 
 
-variable "SNW_USER" {}
+variable "SNOWFLAKE_USER" {
+   type = string
+}
 
-variable "SNW_PASSWORD" {}
+variable "SNOWFLAKE_PASSWORD" {
+   type = string
+}
 
