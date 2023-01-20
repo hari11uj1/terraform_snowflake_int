@@ -44,11 +44,11 @@ jobs:
       #with:
        # INPUT_TF_ACTIONS_CLI_CREDENTIALS_TOKEN: ${{ secrets.TF_API_TOKEN }}
         
-      echo 'terraform plan running'  
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     #- name: Terraform Init
      # run: terraform init
+      
       #working-directory: ${{env.ROOT_PATH}}
       
 
