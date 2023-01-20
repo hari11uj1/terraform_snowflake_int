@@ -30,7 +30,7 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/terraform-github-actions@master
       with:
-        INPUT_CLI_CONFIG_CREDENTIALS_TOKEN: ${{ secrets.TF_API_TOKEN }}
+        INPUT_TF_ACTIONS_CLI_CREDENTIALS_TOKEN: ${{ secrets.TF_API_TOKEN }}
         
         
 
