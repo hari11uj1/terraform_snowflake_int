@@ -29,8 +29,11 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
-      with:
+      env:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+        TF_VAR_SNW_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+        TF_VAR_SNW_USER: 'HARISHKUMAR2'
+        TF_VAR_SNW_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
         
         
 
@@ -44,10 +47,7 @@ jobs:
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan
-      env:
-        TF_VAR_SNW_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-        TF_VAR_SNW_USER: ${{ secrets.SNOWFLAKE_USER }}
-        TF_VAR_SNW_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      
         
 
       #working-directory: ${{env.ROOT_PATH}} 
