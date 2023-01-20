@@ -21,8 +21,8 @@ terraform {
 
 # to connect to snowflake instance
 provider "snowflake" {
- username = "HARISHKUMAR2"
- account = "hy80966.central-india.azure"
+ username = var.SNOWFLAKE_USER
+ account = var.SNOWFLAKE_ACCOUNT
  #role = "accountadmin"
- password = "11Uj1a0318"
+ password = var.SNOWFLAKE_PASSWORD
 }

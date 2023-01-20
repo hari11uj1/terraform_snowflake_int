@@ -14,9 +14,6 @@ jobs:
   terraform_plan:
     name: 'Terraform plan'
     runs-on: ubuntu-latest
-    env:
-      SNOWFLAKE_ACCOUNT: ${{secrets.SNOWFLAKE_ACCOUNT}}
-      SNOWFLAKE_USER: ${{secrets.SNOWFLAKE_USER}}
    
 
     # Use the Bash shell regardless  whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -47,6 +44,12 @@ jobs:
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan
+      env:
+        TF_VAR_SNOWFLAKE_ACCOUNT: ${{secrets.SNOWFLAKE_ACCOUNT}}
+        TF_VAR_SNOWFLAKE_USER: ${{secrets.SNOWFLAKE_USER}}
+        TF_VAR_SNOWFLAKE_PASSWORD: ${{secrets.SNOWFLAKE_PASSWORD}}
+        
+
       #working-directory: ${{env.ROOT_PATH}} 
       
   terraform_apply:
