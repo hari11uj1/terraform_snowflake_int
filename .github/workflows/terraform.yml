@@ -31,10 +31,7 @@ jobs:
       uses: hashicorp/terraform-github-actions@master
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-        env:
-        TF_VAR_SNW_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-        TF_VAR_SNW_USER: ${{ secrets.SNOWFLAKE_USER }}
-        TF_VAR_SNW_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+        
         
         
 
@@ -48,6 +45,10 @@ jobs:
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan
+      env:
+        TF_VAR_SNW_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+        TF_VAR_SNW_USER: ${{ secrets.SNOWFLAKE_USER }}
+        TF_VAR_SNW_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
       
       
         
