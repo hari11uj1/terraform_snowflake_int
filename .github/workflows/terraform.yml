@@ -30,12 +30,12 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/terraform-github-actions@master
-       with:
+      with:
           tf_actions_version: 0.12.13
           tf_actions_subcommand: 'init'
           tf_actions_working_dir: '.'
           tf_actions_comment: true
-        env:
+      env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #with:
        # INPUT_TF_ACTIONS_CLI_CREDENTIALS_TOKEN: ${{ secrets.TF_API_TOKEN }}
