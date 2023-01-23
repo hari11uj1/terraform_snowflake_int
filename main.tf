@@ -11,7 +11,7 @@ module "ALL_USERS_DEV001" {
     "snowflake_user3" : {"first_name" = "snowflake_DEV","last_name"="user3","email"="snowflake_DEV_user3@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_LOADER"},
     "snowflake_user4" : {"first_name" = "snowflake_DEV","last_name"="user4","email"="snowflake_DEV_user4@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_ANALYST"},
     "snowflake_user5" : {"first_name" = "snowflake_DEV","last_name"="user5","email"="snowflake_DEV_user5@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_VIZ"},
-    "snowflake_user30" : {"first_name" = "snowflake_DEV","last_name"="user30","email"="snowflake_DEV_user30@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH0010","default_role"="DATA_LOADER010"}
+    "snowflake_user30" : {"first_name" = "snowflake_DEV","last_name"="user30","email"="snowflake_DEV_user30@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_LOADER"}
 
   }
 }
@@ -74,21 +74,21 @@ module "DATA_VIZ" {
  ]
 }
 
-module "DATA_LOADER010" {
+/*module "DATA_LOADER010" {
  source = "./ROLES_MODULE"
  name = "DATA_LOADER010"
  comment = "a role for SYSADMIN inc"
  role_name = ["DATA_ENGG010"]
  /*users = [
   module.ALL_USERS_DEV001.USERS.snowflake_user30.name, 
- ]*/
-}
+ ]
+}*/
 
 resource "snowflake_user_grant" "grant" {
   user_name = module.ALL_USERS_DEV001.USERS.snowflake_user30.name
   privilege = "MONITOR"
 
-  roles = ["DATA_LOADER010"]
+  roles = ["DATA_LOADER"]
 
   with_grant_option = false
 }
