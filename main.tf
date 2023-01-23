@@ -85,8 +85,7 @@ module "DATA_VIZ" {
 }*/
 
 resource "snowflake_user_grant" "grant" {
-  user_name = module.ALL_USERS_DEV001.USERS.snowflake_user30.name
-  privilege = "MONITOR"
+  user_name = "snowflake_user30"
 
   roles = ["DATA_LOADER"]
 
