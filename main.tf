@@ -11,7 +11,7 @@ module "ALL_USERS_DEV001" {
     "snowflake_user3" : {"first_name" = "snowflake_DEV","last_name"="user3","email"="snowflake_DEV_user3@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_LOADER"},
     "snowflake_user4" : {"first_name" = "snowflake_DEV","last_name"="user4","email"="snowflake_DEV_user4@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_ANALYST"},
     "snowflake_user5" : {"first_name" = "snowflake_DEV","last_name"="user5","email"="snowflake_DEV_user5@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_VIZ"},
-    "snowflake_user30" : {"first_name" = "snowflake_DEV","last_name"="user30","email"="snowflake_DEV_user30@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_LOADER"}
+    #"snowflake_user30" : {"first_name" = "snowflake_DEV","last_name"="user30","email"="snowflake_DEV_user30@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_LOADER"}
 
   }
 }
@@ -84,13 +84,13 @@ module "DATA_VIZ" {
  ]
 }*/
 
-resource "snowflake_user_grant" "grant" {
+/*resource "snowflake_user_grant" "grant" {
   user_name = "snowflake_user30"
 
   roles = ["DATA_LOADER"]
 
   with_grant_option = false
-}
+}*/
   
 # will create a warehouse and asign to users a
 module "snowflake_WAREHOUSE_WH001" {
