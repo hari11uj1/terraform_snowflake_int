@@ -29,7 +29,7 @@ module "DB_ADMIN" {
  comment = "a role for SYSADMIN inc"
  role_name = ["SYSADMIN"]
  users = [
-  #module.ALL_USERS_DEV001.USERS.snowflake_user1.name, 
+  module.ALL_USERS_DEV001.USERS.snowflake_user1.name, 
  ]
 }
 
@@ -39,7 +39,7 @@ module "DATA_ENGG" {
  comment = "a role for SYSADMIN inc"
  role_name = ["DB_ADMIN"]
  users = [
-  #module.ALL_USERS_DEV001.USERS.snowflake_user2.name,
+  module.ALL_USERS_DEV001.USERS.snowflake_user2.name,
  ]
 }
 
@@ -84,13 +84,13 @@ module "DATA_VIZ" {
  ]
 }*/
 
-resource "snowflake_user_grant" "grant" {
+/*resource "snowflake_user_grant" "grant" {
   user_name = "snowflake_user30"
 
   roles = ["DATA_LOADER"]
 
   with_grant_option = false
-}
+}*/
   
 # will create a warehouse and asign to users a
 module "snowflake_WAREHOUSE_WH001" {
