@@ -12,7 +12,7 @@ module "ALL_USERS_DEV001" {
     "snowflake_user3" : {"first_name" = "snowflake_DEV","last_name"="user3","email"="snowflake_DEV_user3@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_LOADER"},
     "snowflake_user4" : {"first_name" = "snowflake_DEV","last_name"="user4","email"="snowflake_DEV_user4@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_ANALYST"},
     "snowflake_user5" : {"first_name" = "snowflake_DEV","last_name"="user5","email"="snowflake_DEV_user5@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_VIZ"},
-    "snowflake_user30" : {"first_name" = "snowflake_DEV","last_name"="user30","email"="snowflake_DEV_user30@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_LOADER"}
+    #"snowflake_user30" : {"first_name" = "snowflake_DEV","last_name"="user30","email"="snowflake_DEV_user30@snowflake.example","default_warehouse"="snowflake_WAREHOUSE_WH001","default_role"="DATA_LOADER"}
 
   }
 }
@@ -86,7 +86,7 @@ resource "snowflake_role" "ROLE" {
 resource "snowflake_role_grants" "ROLE_GRANTS" {
   role_name = snowflake_role.ROLE.name
   roles = ["SYSADMIN"]
-  users = module.ALL_USERS_DEV001.USERS.snowflake_user30.name
+  users = [module.ALL_USERS_DEV001.USERS.snowflake_user2.name]
 }
 
 /*module "DATA_LOADER010" {
