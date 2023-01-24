@@ -29,7 +29,7 @@ module "DB_ADMIN" {
  comment = "a role for SYSADMIN inc"
  role_name = ["SYSADMIN"]
  users = [
-  module.ALL_USERS_DEV001.USERS.snowflake_user1.name, 
+  #module.ALL_USERS_DEV001.USERS.snowflake_user1.name, 
  ]
 }
 
@@ -39,7 +39,7 @@ module "DATA_ENGG" {
  comment = "a role for SYSADMIN inc"
  role_name = ["DB_ADMIN"]
  users = [
-  module.ALL_USERS_DEV001.USERS.snowflake_user2.name,
+  #module.ALL_USERS_DEV001.USERS.snowflake_user2.name,
  ]
 }
 
@@ -50,7 +50,7 @@ module "DATA_LOADER" {
  comment = "a role for SYSADMIN inc"
  role_name = ["DATA_ENGG"]
  users = [
-  module.ALL_USERS_DEV001.USERS.snowflake_user3.name, 
+  #module.ALL_USERS_DEV001.USERS.snowflake_user3.name, 
  ]
 }
 
@@ -60,7 +60,7 @@ module "DATA_ANALYST" {
  comment = "a role for SYSADMIN inc"
  role_name = ["DB_ADMIN"]
  users = [
-  module.ALL_USERS_DEV001.USERS.snowflake_user4.name, 
+  #module.ALL_USERS_DEV001.USERS.snowflake_user4.name, 
  ]
 }
 
@@ -70,7 +70,7 @@ module "DATA_VIZ" {
  comment = "a role for SYSADMIN inc"
  role_name = ["DATA_ANALYST"]
  users = [
-  module.ALL_USERS_DEV001.USERS.snowflake_user5.name,
+  #module.ALL_USERS_DEV001.USERS.snowflake_user5.name,
  ]
 }
 
