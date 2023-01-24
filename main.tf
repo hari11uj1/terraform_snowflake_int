@@ -84,13 +84,13 @@ module "DATA_VIZ" {
  ]
 }*/
 
-/*resource "snowflake_user_grant" "grant" {
+resource "snowflake_user_grant" "grant" {
   user_name = "snowflake_user30"
 
   roles = ["DATA_LOADER"]
 
   with_grant_option = false
-}*/
+}
   
 # will create a warehouse and asign to users a
 module "snowflake_WAREHOUSE_WH001" {
