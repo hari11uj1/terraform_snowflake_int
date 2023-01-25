@@ -89,12 +89,12 @@ resource "snowflake_role_grants" "ROLE_GRANTS" {
   users = [module.ALL_USERS_DEV001.USERS.snowflake_user30.name]
 }
 
-resource "snowflake_role" "ROLE1" {
+/*resource "snowflake_role" "ROLE1" {
   name = "admin9"
   comment = "this is a sample role"
 }
 
-variable "roles1" {
+/*variable "roles1" {
   type = map(object({
           role_name= string,
           roles = list(string),
@@ -109,7 +109,7 @@ variable "roles1" {
   }
 }
 
-resource "snowflake_role_grants" "ROLE_GRANTS1" {
+/*resource "snowflake_role_grants" "ROLE_GRANTS1" {
   for_each = var.roles1
   role_name = each.value["role_name"]
   roles = each.value["roles"]
