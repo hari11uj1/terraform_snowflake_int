@@ -94,6 +94,21 @@ resource "snowflake_role" "ROLE1" {
   comment = "this is a sample role"
 }
 
+variable "roles1" {
+  type = map(object({
+          role_name= string,
+          roles = list(string),
+          users= list(string)
+  }))
+  default = {
+    "one" = {
+      role_name = "admin9"
+      roles = [ "SYSADMIN" ]
+      users = list(string)
+    }
+  }
+}
+
 resource "snowflake_role_grants" "ROLE_GRANTS1" {
   for_each = var.roles1
   role_name = each.value["role_name"]
