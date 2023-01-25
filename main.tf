@@ -89,6 +89,19 @@ resource "snowflake_role_grants" "ROLE_GRANTS" {
   users = [module.ALL_USERS_DEV001.USERS.snowflake_user30.name]
 }
 
+resource "snowflake_role" "ROLE1" {
+  name = "admin9"
+  comment = "this is a sample role"
+}
+
+resource "snowflake_role_grants" "ROLE_GRANTS" {
+  for_each = var.roles1
+  role_name = each.value["role_name"]
+  roles = each.value["roles"]
+  users = [module.ALL_USERS_DEV001.USERS.snowflake_user30.name]
+  depends_on = [snowflake_role.ROLE1]
+}
+
 /*module "DATA_LOADER010" {
  source = "./ROLES_MODULE"
  name = "DATA_LOADER010"
