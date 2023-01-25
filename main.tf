@@ -94,7 +94,7 @@ resource "snowflake_role" "ROLE1" {
   comment = "this is a sample role"
 }
 
-resource "snowflake_role_grants" "ROLE_GRANTS" {
+resource "snowflake_role_grants" "ROLE_GRANTS1" {
   for_each = var.roles1
   role_name = each.value["role_name"]
   roles = each.value["roles"]
