@@ -25,7 +25,7 @@ variable "roles1" {
     "one" = {
       role_name = "admin9"
       roles = [ "SYSADMIN" ]
-      #users = [module.ALL_USERS_DEV001.USERS.snowflake_user30.name,]
+      users = list(string)
     }
   }
 }
