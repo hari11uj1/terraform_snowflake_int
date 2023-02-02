@@ -19,6 +19,8 @@ resource "snowflake_user" "USERS" {
   display_name = "${each.value.first_name} ${each.value.last_name}"
 }
 
+
+
 output "USERS" {
   value = snowflake_user.USERS
 }
