@@ -27,7 +27,7 @@ provider "azurerm" {
   features {}
 }
 
-data "azurerm_client_config" "current" {}
+# data "azurerm_client_config" "current" {}
 # to connect to snowflake instance
 provider "snowflake" {
  username = data.azurerm_key_vault_secret.test2.value
