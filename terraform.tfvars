@@ -1,4 +1,4 @@
-SNOWFLAKE_ACCOUNT  = data.azurerm_key_vault_secret.test1.value
+/*SNOWFLAKE_ACCOUNT  = data.azurerm_key_vault_secret.test1.value
 SNOWFLAKE_PASSWORD = data.azurerm_key_vault_secret.test.value
 #snowflake_role     = "accountadmin"
 SNOWFLAKE_USER = data.azurerm_key_vault_secret.test2.value

@@ -1,4 +1,4 @@
-variable "SNOWFLAKE_ACCOUNT" {
+/*variable "SNOWFLAKE_ACCOUNT" {
   type = string
 }
 
@@ -10,4 +10,4 @@ variable "SNOWFLAKE_USER" {
 variable "SNOWFLAKE_PASSWORD" {
    type = string
 }
-
+*/

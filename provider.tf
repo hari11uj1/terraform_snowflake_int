@@ -23,19 +23,18 @@ terraform {
   }
 }
 
-# to connect to snowflake instance
-provider "snowflake" {
- username = var.SNOWFLAKE_USER
- account = var.SNOWFLAKE_ACCOUNT
- #role = "accountadmin"
- password = var.SNOWFLAKE_PASSWORD
-}
-
 provider "azurerm" {
   features {}
 }
 
 data "azurerm_client_config" "current" {}
+# to connect to snowflake instance
+provider "snowflake" {
+ username = data.azurerm_key_vault_secret.test2.value
+ account = data.azurerm_key_vault_secret.test1.value
+ #role = "accountadmin"
+ password = data.azurerm_key_vault_secret.test.value
+}
 
 
 resource "azurerm_resource_group" "app_grp" {
