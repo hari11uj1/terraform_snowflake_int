@@ -37,7 +37,7 @@ jobs:
     - name: init Terraform
       uses: hashicorp/terraform-github-actions@master
       with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+        #cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
         tf_actions_version: 0.14.8
         tf_actions_subcommand: 'init'
         tf_actions_working_dir: "./terraform"
