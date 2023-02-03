@@ -13,7 +13,7 @@ terraform {
 }
 
 # terraform remote  backend to maintain the state file. It keeps track of all the changes which are preformed through terraform
-terraform {
+/*terraform {
   backend "remote" {
     organization = "SNOWFLAKE_TERRAFORM_INTIGRATION"
 
@@ -21,7 +21,7 @@ terraform {
       name = "snowflake_3"
     }
   }
-}
+}*/
 
 provider "azurerm" {
   features {}
